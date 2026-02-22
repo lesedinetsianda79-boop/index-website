@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Amogelang</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x:hidden;
+}
+
+/* ---------- PAGE 1 ---------- */
+
+.page1{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    text-align:center;
+    color:white;
+}
+
+/* 6 IMAGE GRID (2 columns, 3 rows) */
+.image-grid{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    z-index:-2;
+}
+
+.image-grid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* soft luxury overlay */
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(to bottom, rgba(255,105,180,0.6), rgba(186,85,211,0.6));
+    z-index:-1;
+}
+
+/* heading */
+.page1 h1{
+    font-size:22px;
+    padding:18px;
+    background:rgba(0,0,0,0.45);
+    border-radius:20px;
+    backdrop-filter:blur(5px);
+}
+
+/* OPEN button */
+.open-btn{
+    margin-top:25px;
+    padding:12px 35px;
+    background:white;
+    color:#d63384;
+    border:none;
+    border-radius:30px;
+    font-weight:bold;
+    font-size:16px;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.open-btn:active{
+    transform:scale(0.95);
+}
+
+/* ---------- PAGE 2 ---------- */
+
+.page2{
+    display:none;
+    min-height:100vh;
+    background:linear-gradient(to bottom,#fff0f6,#f8d7ff);
+    padding:20px;
+}
+
+/* content container */
+.content{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    align-items:center;
+}
+
+/* big picture */
+.big-pic{
+    width:100%;
+    max-width:350px;
+}
+
+.big-pic img{
+    width:100%;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* message */
+.message{
+    font-size:15px;
+    line-height:1.7;
+    color:#444;
+    text-align:center;
+}
+
+.message h2{
+    color:#d63384;
+    margin-bottom:15px;
+}
+
+/* Floating subtle hearts */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:18px;
+    opacity:0.7;
+    animation:floatUp 7s linear forwards;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0); opacity:1;}
+    100%{transform:translateY(-110vh); opacity:0;}
+}
+
+/* ---------- TABLET+ ---------- */
+@media(min-width:600px){
+    .content{
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        text-align:left;
+    }
+
+    .message{
+        text-align:left;
+        max-width:400px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page1" id="page1">
+
+    <div class="image-grid">
+        <img src="WhatsApp Image 2026-02-12 at 19.58.44.jpeg">
+        <img src="WhatsApp Image 2026-02-12 at 19.58.44 (1).jpeg">
+        <img src="WhatsApp Image 2026-02-12 at 19.58.44 (2).jpeg">
+        <img src="WhatsApp Image 2026-02-12 at 19.58.43 (1).jpeg">
+        <img src="WhatsApp Image 2026-02-12 at 19.58.42.jpeg">
+        <img src="WhatsApp Image 2026-02-12 at 19.58.43.jpeg">
+    </div>
+
+    <div class="overlay"></div>
+
+    <h1>Happy Birthday<br>Amogelang Mashigo 💖</h1>
+    <button class="open-btn" onclick="openCard()">Open</button>
+
+</div>
+
+<!-- PAGE 2 -->
+<div class="page2" id="page2">
+
+    <div class="content">
+
+        <div class="big-pic">
+            <img src="WhatsApp Image 2026-02-12 at 19.59.39.jpeg">
+        </div>
+
+        <div class="message">
+            <h2>Happy Birthday Amo 💕</h2>
+            Happy birthday Amogelang Mashigo I just want you to know how grateful we are that you came in to our lives you’ve been like a sister to us and we will keep on protecting until the casket drops we’ve experienced a lot of fights between us but that’s just shows how much we care for each other we always want you to remember that we will also choose you to be our sister today, tomorrow and forever  
+            <br><br>
+            Once Again Happy Birthday Amo  
+            <br><br>
+            Love your brothers  
+            Katlego and Lebo ❤️
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openCard(){
+    document.getElementById("page1").style.display="none";
+    document.getElementById("page2").style.display="block";
+    startHearts();
+}
+
+function startHearts(){
+    setInterval(()=>{
+        let heart=document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML="💗";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(15+Math.random()*20)+"px";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{heart.remove();},7000);
+    },500);
+}
+
+</script>
+
+</body>
+</html>
